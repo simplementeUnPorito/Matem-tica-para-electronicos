@@ -1,0 +1,87 @@
+seriefourier(f,i1,i2,T)
+BEGIN
+w0:=2*π/T;
+w0:=simplify(w0);
+
+a0:=1/T*int(f(1),x,i1(1),i1(2))+1/T*int(f(2),x,i2(1),i2(2));
+a0:=simplify(a0);
+
+ax:=2/T*int(f(1)*COS(n*w0*x),x,i1(1),i1(2))+2/T*int(f(2)*COS(n*w0*x),x,i2(1),i2(2));
+ax:=factor(ax);
+
+a1:=2/T*int(f(1)*COS(w0*x),x,i1(1),i1(2))+2/T*int(f(2)*COS(w0*x),x,i2(1),i2(2));
+a1:=factor(a1);
+
+bx:=2/T*int(f(1)*SIN(n*w0*x),x,i1(1),i1(2))+2/T*int(f(2)*SIN(n*w0*x),x,i2(1),i2(2));
+bx:=factor(bx);
+
+b1:=2/T*int(f(1)*SIN(w0*x),x,i1(1),i1(2))+2/T*int(f(2)*SIN(w0*x),x,i2(1),i2(2));
+b1:=factor(b1);
+
+
+print(" ");
+print(" SERIE FOURIER version 3.0 PTRRZA");
+print(T);
+print(w0);
+print("sin(n*π)=0 cos(n*π)=(-1)^n ");
+print("sin(2*n*π)=0 cos(2*n*π)=1");
+print("n=2*k-1: sin(n*π/2)=(-1)^(n-1)/2, cos(n*π/2)=0");
+print(" ");
+print(a0);
+print("an: "+ax);
+print(a1);
+print("bn: "+bx);
+print(b1);
+print(" ");
+return({a0,ax,bx});
+END;
+#end
+
+
+
+
+                          Escuela de Ingeniería Eléctrica Electrónica
+                                                                         Programa HP PRIME 2
+                                                         Serie Fourier de PTRRZA versión 3.0
+
+
+
+ xfourier(f1,i1,i2,f2,i3,i4,T)
+
+BEGIN
+w0:=2*π/T;
+w0:=simplify(w0);
+a0:=1/T*int(f1,x,i1,i2)+1/T*int(f2,x,i3,i4);
+a0:=simplify(a0);
+
+ax:=2/T*int(f1*cos(n*w0*x),x,i1,i2)+2/T*int(f2*cos(n*w0*x),x,i3,i4);
+ax:=factor(ax);
+
+a1:=2/T*int(f1*cos(w0*x),x,i1,i2)+2/T*int(f2*cos(w0*x),x,i3,i4);
+a1:=factor(a1);
+
+bx:=2/T*int(f1*sin(n*w0*x),x,i1,i2)+2/T*int(f2*sin(n*w0*x),x,i3,i4);
+bx:=factor(bx);
+
+b1:=2/T*int(f1*sin(w0*x),x,i1,i2)+2/T*int(f2*sin(w0*x),x,i3,i4);
+b1:=factor(b1);
+
+print(" ");
+print(" ");
+print(" SERIE FOURIER 3.0 ");
+print(T);
+print(w0);
+print("sin(n*π)=0 cos(n*π)=(-1)^n");
+print("sin(2*n*π)=0 cos(2*n*π)=1 ");
+print("n=2*k-1 sin(n*π/2)=(-1)^(n-1)/2 cos(n*π/2)=0");
+
+print("");
+print(a0);
+print("an:"+ax);
+print("a1:"+a1);
+print("bn:"+bx);
+print("b1:"+b1);
+print(" ");
+return({a0,ax,bx});
+
+END;
